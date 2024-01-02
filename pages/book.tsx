@@ -15,7 +15,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="prose m-auto mt-24 font-serif text-lg">
+    <div className="prose m-auto mt-16 mb-64 font-serif text-lg px-8 md:mt-24 md:text-base">
       {mdxSource && (
         <MDXRemote
           compiledSource={""}

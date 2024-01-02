@@ -20,3 +20,13 @@ body {
   color: rgb(var(--foreground-rgb));
   background: #fff;
 }
+
+.prose h1 {
+  font-size: 2rem;
+}
+
+@media (max-width: 600px) {
+  .prose h1 {
+    font-size: 1.5rem;
+  }
+}
