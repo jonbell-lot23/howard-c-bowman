@@ -18,10 +18,9 @@ export default function Page() {
     <div className="prose m-auto mt-16 mb-64 font-serif text-lg px-8 md:mt-24 md:text-base">
       {mdxSource && (
         <MDXRemote
-          compiledSource={""}
+          compiledSource={mdxSource.compiledSource}
           scope={undefined}
           frontmatter={undefined}
-          {...(mdxSource ? mdxSource : {})}
         />
       )}
     </div>
