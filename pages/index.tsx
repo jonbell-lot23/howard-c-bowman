@@ -4,13 +4,30 @@
 import { useEffect, useState } from "react";
 import { MDXRemote } from "next-mdx-remote";
 
+interface MdxSource {
+  compiledSource: string;
+  // Add other properties from the API response if needed
+}
+
 export default function Page() {
-  const [mdxSource, setMdxSource] = useState(null);
+  // Use the MdxSource type for the state
+  const [mdxSource, setMdxSource] = useState<MdxSource | null>(null);
 
   useEffect(() => {
     fetch("/api/mdx")
       .then((res) => res.json())
-      .then((data) => setMdxSource(data.mdxSource))
+      .then((data) => {
+        // Ensure that the data is of the MdxSource type
+        if (
+          data &&
+          data.mdxSource &&
+          typeof data.mdxSource.compiledSource === "string"
+        ) {
+          setMdxSource(data.mdxSource);
+        } else {
+          console.error("Invalid data format");
+        }
+      })
       .catch((error) => console.error(error));
   }, []);
 
